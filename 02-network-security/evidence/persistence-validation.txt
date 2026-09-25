@@ -1,0 +1,32 @@
+=== ROUTER POST-REBOOT PERSISTENCW VALIDATION ===
+
+---nftables enabled ---
+enabled
+
+--- nftables active ---
+active
+
+--- IPv4 forwarding ---
+net.ipv4.ip_forward = 1
+
+--- Forward chain ---
+table inet filter {
+	chain forward {
+		type filter hook forward priority filter; policy drop;
+		ct state established,related accept
+		ip saddr 10.10.10.10 ip daddr 10.10.20.10 tcp dport 22 accept
+		ip saddr 10.10.10.10 ip daddr 10.10.30.10 tcp dport 22 accept
+		ip saddr 10.10.10.10 ip daddr 10.10.40.10 tcp dport 22 accept
+		ip saddr 10.10.20.10 ip daddr 10.10.30.10 tcp dport 8080 accept
+		ip saddr 10.10.30.10 ip daddr 10.10.40.10 tcp dport 5432 accept
+		ip saddr 10.10.0.0/16 oifname "enp0s3" accept
+	}
+}
+
+---NAT postrouting chain ---
+table ip nat {
+	chain postrouting {
+		type nat hook postrouting priority srcnat; policy accept;
+		ip saddr 10.10.0.0/16 oifname "enp0s3" masquerade
+	}
+}

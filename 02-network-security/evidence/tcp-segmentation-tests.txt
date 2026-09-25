@@ -1,0 +1,55 @@
+NETWORK SEGMENTATION TCP TEST RESULTS
+=====================================
+
+Environment:
+ADMIN01 = 10.10.10.10
+WEB01   = 10.10.20.10
+APP01   = 10.10.30.10
+DATA01  = 10.10.40.10
+
+TEST 1
+Source:      WEB01
+Destination: APP01
+Port:        TCP/8080
+Expected:    ALLOW
+Observed:    ALLOW
+Result:      PASS
+
+TEST 2
+Source:      WEB01
+Destination: APP01
+Port:        TCP/22
+Expected:    DENY
+Observed:    DENY
+Result:      PASS
+
+TEST 3
+Source:      APP01
+Destination: DATA01
+Port:        TCP/5432
+Expected:    ALLOW
+Observed:    ALLOW
+Result:      PASS
+
+TEST 4
+Source:      WEB01
+Destination: DATA01
+Port:        TCP/5432
+Expected:    DENY
+Observed:    DENY
+Result:      PASS
+
+TEST 5
+Source:      DATA01
+Destination: APP01
+Port:        TCP/8080
+Expected:    DENY
+Observed:    DENY
+Result:      PASS
+
+SUMMARY
+5/5 targeted TCP segmentation tests passed.
+
+NOTE:
+TCP/5432 was tested using a temporary Python HTTP server.
+No PostgreSQL database was deployed for this connectivity test.

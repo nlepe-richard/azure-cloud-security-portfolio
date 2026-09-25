@@ -1,0 +1,28 @@
+=== ROUTER01 NFTABLES RULESET ===
+
+table inet filter {
+	chain input {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain forward {
+		type filter hook forward priority filter; policy drop;
+		ct state established,related accept
+		ip saddr 10.10.10.10 ip daddr 10.10.20.10 tcp dport 22 accept
+		ip saddr 10.10.10.10 ip daddr 10.10.30.10 tcp dport 22 accept
+		ip saddr 10.10.10.10 ip daddr 10.10.40.10 tcp dport 22 accept
+		ip saddr 10.10.20.10 ip daddr 10.10.30.10 tcp dport 8080 accept
+		ip saddr 10.10.30.10 ip daddr 10.10.40.10 tcp dport 5432 accept
+		ip saddr 10.10.0.0/16 oifname "enp0s3" accept
+	}
+
+	chain output {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table ip nat {
+	chain postrouting {
+		type nat hook postrouting priority srcnat; policy accept;
+		ip saddr 10.10.0.0/16 oifname "enp0s3" masquerade
+	}
+}
