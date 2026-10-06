@@ -103,8 +103,9 @@ This lab develops foundational knowledge relevant to:
 
 VirtualBox Internal Networks and Linux nftables are not direct replacements for Azure Virtual Networks or NSGs. Azure-specific implementations require separate validation in an Azure environment.
 
-## Documentation
+## Documentation## Documentation
 
+* [Network architecture](architecture/network-architecture.md)
 * [Network design](documentation/network-design.md)
 * [Firewall policy](documentation/firewall-policy.md)
 * [Validation results](documentation/validation-results.md)

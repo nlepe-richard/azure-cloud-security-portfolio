@@ -20,7 +20,26 @@ Because the portfolio is developed without an active Azure subscription, the pro
 The portfolio clearly distinguishes between locally executed labs and Azure-specific implementations that require an Azure subscription.
 
 ---
+## Featured Project
 
+### Segmented Network Security Lab
+
+Designed, implemented, and validated a four-zone network architecture using VirtualBox, Ubuntu Server, Linux routing, NAT, nftables, and SSH key-based administration.
+
+Key outcomes:
+
+* Four isolated Management, Web, Application, and Data networks
+* Centralized routing and NAT through a Linux router
+* Stateful default-deny firewall policy
+* Least-privilege inter-tier communication
+* SSH key-based administrative access
+* Positive and negative TCP segmentation testing
+* Firewall and routing persistence validation
+* Documented Layer 2 and firewall troubleshooting case studies
+
+[View the Network Security Lab](02-network-security/README.md)
+
+---
 ## Lab Environment
 
 The laboratory runs on a local Windows workstation capable of hosting multiple virtual machines and isolated virtual networks.
@@ -51,7 +70,7 @@ azure-cloud-security-portfolio/
 │
 ├── 00-workstation-setup/
 ├── 01-identity-governance/
-├── 02-networking/
+├── 02-networking-security/
 ├── 03-storage/
 ├── 04-compute/
 ├── 05-monitoring-kql/
@@ -273,33 +292,37 @@ This portfolio is designed to progressively demonstrate competencies in:
 ### Completed
 
 * [x] Local workstation preparation
-* [x] PowerShell 7 installation
-* [x] Git installation and configuration
-* [x] Visual Studio Code installation
-* [x] Azure CLI installation
-* [x] Bicep CLI installation
-* [x] WSL2 configuration
-* [x] Ubuntu 24.04 installation
-* [x] Git repository initialization
-* [x] GitHub repository integration
+* [x] PowerShell, Git, Visual Studio Code, Azure CLI, and Bicep CLI setup
+* [x] WSL2 and Ubuntu configuration
+* [x] Git and GitHub repository configuration
+* [x] VirtualBox multi-network laboratory
+* [x] Four-zone Management, Web, Application, and Data architecture
+* [x] Linux routing and outbound NAT
+* [x] Stateful nftables firewall with default-deny forwarding
+* [x] SSH key-based administrative access
+* [x] Positive and negative network segmentation testing
+* [x] Firewall and routing persistence validation
+* [x] Network troubleshooting case studies
+* [x] Network Security Lab documentation and evidence
 
-### In Progress
+### Next
 
-* [ ] VirtualBox laboratory configuration
-* [ ] Virtual network architecture
-* [ ] First Linux virtual machines
+* [ ] Azure-native network architecture mapping
+* [ ] VNet and subnet design
+* [ ] Network Security Group design
+* [ ] Bicep implementation
+* [ ] Local Bicep compilation and validation
 
 ### Upcoming
 
 * [ ] Identity & Governance
-* [ ] Azure Networking
 * [ ] Storage
 * [ ] Compute
 * [ ] Monitoring & KQL
 * [ ] Automation
-* [ ] Bicep Infrastructure as Code
 * [ ] Cloud Security labs
 * [ ] Secure Azure Architecture Capstone
+
 
 ---
 
